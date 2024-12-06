@@ -1,0 +1,20 @@
+<div class="input-container" >
+    <div class="input-elements" >
+      <div class="input-element  flex-center" [class.hide-hover]="isDisabled" [tabindex]="0" [class.cform-in-valid]="!isValid" [autofocus]="true" [class.display-border]="selectionModel.hasValue()" (focus)="[ref.focus(),ref.value='']" [class.disable]="isDisabled">
+        <ng-container *ngIf="selectionModel.selected.length">
+        <div *ngFor="let i of selectionModel.selected" class="chip-container flex-center" >
+          <span>{{i}}</span> 
+          <img class="close-icon close ml-2 cursor-pointer " *ngIf="!isDisabled" (click)="selectionModel.toggle(i)"
+                                    src="/assets/icons/Close_black.svg" alt="close">
+          </div>
+        </ng-container>
+        <input #ref tabindex="0" [placeholder]="isDisabled?'':placeholder"  type="text" class="real-input" 
+          [class.cform-in-valid]="" [class.disable]="isDisabled" [autofocus]="true" 
+          [disabled]="isDisabled" (keyup.enter)="[addValue(ref),ref.value='']" />
+        </div>
+        <div class="lablex" [class.lablex-top]="selectionModel.hasValue()" >{{labelValue}}
+            <span *ngIf="required" class="text-danger fw-bold fs-6">*</span>
+        </div>
+      
+    </div>
+  </div>

@@ -1,0 +1,44 @@
+<div class="input-container" #maindivct tabindex="0" (focus)="inp.focus()"  >
+  <div (click)="[showHideDropDown()]" class="input-elements cursor" [class.disable]="isDisabled" #customSelect (keyup)="[keydown($event)]"  >
+  <input  class="input-element" [class.display-border]="selectionModel.hasValue()" type="text"  #inp cdkOverlayOrigin #triggercheckbox="cdkOverlayOrigin" 
+  [value]="selectedValue || placeholder" [class.cform-in-valid]="!isValid" 
+  [disabled]="isDisabled" [class.disable]="isDisabled" [readonly]="!enableSearch" 
+  [placeholder]="placeholder" 
+  />
+     <label>{{labelValue}}<ng-container *ngIf="required">
+      <span class="text-danger fw-bold fs-6">*</span>
+      </ng-container>
+  </label>
+    <div *ngIf="remainingCount" [ngClass]="isDisabled ?'disable':'cursor'" class="count "  matTooltipClass="tooltip-list" [matTooltip]="showTooltip?tooltipContent():''" >+({{remainingCount}})</div>
+  <img class=" drop-icon " [ngClass]="isDisabled ?'disable':'cursor'"  [class.flip-icon]="showDropDown" src="assets/icons/Arrow_for_dropdwon.svg" alt="dropdown"/>
+</div>
+
+<ng-template  
+    cdkConnectedOverlay
+    [cdkConnectedOverlayWidth]="contentWidth.width!"
+    [cdkConnectedOverlayOrigin]="triggercheckbox"  
+    [cdkConnectedOverlayHasBackdrop]="true"  
+    [cdkConnectedOverlayBackdropClass]="['cdk-overlay-transparent-backdrop', 'custom-backdrop-z-index']"
+    [cdkConnectedOverlayPanelClass]="'test-custom-dropdown'"
+    [cdkConnectedOverlayOpen]="showDropDown" (overlayKeydown)="pressed($event)"
+    (backdropClick)="[showHideDropDown()]" (detach)="showDropDown=false" (positionChange)="setOverlayWidth()" >
+    <div class="overlay-popup custom-dropdown" aria-label="true" >
+      <div class="search-container">
+        <!-- <input type="text" autofocus class="input-search" *ngIf="listData.length > 4 " [placeholder]="inputSearchPlaceholder" [formControl]="control"> -->
+        <app-search-box *ngIf="listData.length > 4 " [placeHolder]="inputSearchPlaceholder" (enteredValue)="control.setValue($event)" [removeSearchIcon]="true" autofocus id="searchBox"></app-search-box>
+      </div>
+      <div class="dropdown-style"  #cstmpopup *ngIf="dropdownList$|async as dropdownList">
+        <ng-container *ngIf="dropdownList?.length" >
+          <mat-checkbox  color="primary" #checkboxRef class="custom-matcheckbox" *ngIf="dropdownList?.length>1 && isAllOptionShown"
+            [checked]="selectionModel.hasValue()&&isAllItemsSelected()" (click)="$event.stopPropagation()" (keydown.enter)="toggleAllItems()"
+            (change)="$event?[toggleAllItems(),focusOut(checkboxRef)]:null">
+            Select All</mat-checkbox>
+          <mat-checkbox color="primary" #checkboxRef class="custom-matcheckbox" *ngFor="let i of dropdownList;index as ind " (click)="[updateSelectionModel(i[dropDownValueProp], ind),arrowkeyLocation=ind]" [class.show-hover]="ind==arrowkeyLocation"
+            (keydown.enter)="updateSelectionModel(i[dropDownValueProp], ind)" 
+            [checked]="selectionModel.isSelected(i[dropDownValueProp])" >{{i[dropDownKeyProp]}}</mat-checkbox>
+        </ng-container>
+          <div *ngIf="dropdownList?.length <= 0" class="ml-2"><span>{{noRecordsFoundMessage}}</span></div>
+        </div>
+    </div>
+</ng-template>
+</div>

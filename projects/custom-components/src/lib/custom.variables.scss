@@ -1,0 +1,35 @@
+$bg-color:#0364B4;
+$border-color:#F68C00;
+$font-size:13px;
+$btn-color:#3874FF;
+$nested-submenu-color:#939393;
+$btn-height:28px;
+$input-control-hieght:25px;
+$label-font-size:12px;
+$dropdown-hieght:20px;
+$sub-border-color : #9F9F9F;
+$border-size :1.6px;
+$border-wrap-color : #000000;
+$box-bg-white: #FFFFFF;
+
+//
+$sub-border-color : #9F9F9F;
+$border-size :1.6px;
+$border-wrap-color : #000000;
+$box-bg-white: #FFFFFF;
+//
+
+@mixin btn-style-vd {
+  height: $btn-height;
+  background-color: $btn-color;
+  padding-block: 2px;
+  padding-inline: 4px;
+  color: white;
+  border:none;
+  border-radius: 3px;
+  font-size: 12px;
+  margin:4px;
+  font-family:inherit !important;
+}
+
+

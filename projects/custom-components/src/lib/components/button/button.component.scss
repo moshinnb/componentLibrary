@@ -1,0 +1,134 @@
+//@import '../../../../variables.scss';
+
+button{
+    width: 100%;
+    height: 100%;
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.admin{
+    font-weight: bold;
+    letter-spacing: 0.7px;
+}
+
+.general{
+    background-color: white;
+    color:  #3874FF;
+    border: thin solid  #3874FF;
+    transition: background-color 0.4s;
+}
+
+.secondary{
+    color:  #0364B4;
+    background-color: white;
+    border: thin solid  #0364B4;
+    transition: background-color 0.4s;
+}
+
+.general:not([disabled]):is(:hover, :focus){
+    background-color: #3874FF;
+    border: 1px solid  #0364B4;
+    color: white;
+
+   .svgIcon{
+    filter: brightness(0) invert(1);
+   }
+}
+
+.disableButton
+{
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.primary{
+    background-color:  #3874FF;
+    color: white;
+    border: thin solid  #3874FF;
+    transition: background-color 0.4s;
+}
+
+.primary:not([disabled]):is(:hover, :focus),
+.secondary:not([disabled]):is(:hover, :focus){
+    background-color:  #0364B4;
+    border: 1px solid  #0364B4;
+    color: white;
+}
+
+.danger:not([disabled]):is(:hover, :focus),
+.danger-secondary:not([disabled]):is(:hover, :focus){
+    background-color:  red;
+    border: 1px solid  red;
+    color: white;
+}
+
+.success:not([disabled]):is(:hover, :focus){
+    background-color:  #00652c;
+    border: 1px solid  #00652c;
+    color: white;
+}
+
+.multiple-buttons{
+    display: flex;
+    border : 1px solid #3874FF;
+    background-color: #3874FF;
+    justify-content: center;
+    padding: 5px 8px;
+    border-radius: 4px;
+    align-items: center;
+
+    button{
+        border: none;
+        padding: 0;
+        border: none;
+        padding: 0;
+        width: auto;
+        color: white;
+        background-color: #3874FF;
+    }
+
+    button:first-child{
+        min-width: 80px;
+        border-radius: 0;
+    }
+
+    button:last-child{
+        .svgIcon{
+            filter: brightness(0) invert(1);
+           }
+    }
+
+    .divider{
+        border-right: 1.6px solid white;
+        height: 15px;
+    }
+}
+
+.bold-font-size{
+    font-size: 14px;
+}
+
+.danger{
+    color:  red;
+    background-color: white;
+    border: thin solid  red;
+    transition: background-color 0.4s;
+}
+
+.success{
+    color:  white;
+    background-color: #008138;
+    border: thin solid  #008138;
+    transition: background-color 0.4s;
+}
+
+.danger-secondary{
+    background-color: red;
+    color: white;
+    border: thin solid red;
+    transition: background-color 0.4s;
+}

@@ -1,0 +1,92 @@
+@import '../../custom.variables.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.input-element{
+    height: auto;
+    min-height: 50px !important;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    transition: 0.5s ease-in-out;
+   
+}
+.lablex {
+    position: absolute;
+    font-size: 13px;
+    left: 3px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: bold;
+    color: black;
+    padding: 0 0.3rem;
+    margin: 0 0.3rem;
+    transition: 0.4s ease-out;
+    transform-origin: left top;
+    pointer-events: none;
+    font-family: inherit;
+  }
+.input-element:hover:not(.hide-hover) + .lablex,
+.input-element:focus-within +.lablex
+{
+   color: #6D6D6Dbd !important;
+   top: 0;
+   transform: translateY(30%) scale(0.9) !important;   
+  
+}
+.input-element:focus-within,
+.input-element:focus{
+    color: black !important;
+    border-width: $border-size !important;  
+    border-color: #00000087;
+}
+.real-input{
+    display: none;
+}
+.input-element:not(:focus-within,:hover) {
+    .real-input{
+
+        display:none !important;
+    }
+}
+.input-element:focus-within{ 
+    .real-input{
+ display:inline-flex 
+}
+}
+.real-input{
+    border:none !important;
+    border-width: 0px;
+    outline-style: none;
+}
+.chip-container{
+    background: #D8EDFF;
+    padding: 2px 5px;
+    height: 25px;
+    span :last-child:hover:focus{
+        color: white;
+    }
+}
+.close-icon {
+    background-color: inherit;
+    margin-left: auto;
+    cursor: pointer;
+    width: 10px;
+    height: 10px;
+}
+.lablex-top{
+    color: #6D6D6Dbd !important;
+    top: 0;
+    transform: translateY(30%) scale(0.9) !important;
+     
+ }
+.disable{
+     background-color: rgb(238 238 238 / 33%);
+}
+.flex-center{
+    display: flex;
+    align-items: center;
+}

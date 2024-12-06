@@ -1,0 +1,147 @@
+@import '../../custom.variables.scss';
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.input-elements {
+    position: relative;
+  }
+  
+  label {
+    position: absolute;
+    font-size: 13px;
+    font-family: inherit;
+    left: 3px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: bold;
+    color: black;
+    padding: 0 0.3rem;
+    margin: 0 0.3rem;
+    transition: 0.4s ease-out;
+    transform-origin: left top;
+    pointer-events: none;
+    letter-spacing: 0.7px;
+  }
+  
+  input {
+    font-size: 13px;
+    font-family: inherit;
+    width: 100%;
+    outline: none;
+    border: $border-size solid #00000029;
+    border-radius: 5px;
+    padding: 1.5rem 0.7rem 0.4rem 0.7rem;
+    color: #000000c9;
+    font-weight: 600;
+    transition: 0.5s ease-in-out;
+    height: 45px;
+    cursor: text;
+    letter-spacing: 0.7px;
+    
+  }
+  
+  input:focus {
+    border-color: #00000087;
+    cursor:text;
+  }
+  
+  input:focus + label {
+    color: #6D6D6Dbd !important;
+    top: 0;
+    transform: translateY(30%) scale(0.9) !important;
+    
+  }
+  input:hover + label {
+    color: #6D6D6Dbd !important;
+    top: 0;
+    transform: translateY(30%) scale(0.9) !important;
+    transition: 0.3s ease-in
+  }
+  
+  
+  input:not(:placeholder-shown) + label {   
+    top: 0;
+    transform: translateY(30%) scale(0.9) !important;
+    color: #6D6D6Dbd !important;    
+    
+  }
+  
+  input:not(:placeholder-shown){    
+    border-color: rgba(0, 0, 0, 0.5294117647);
+  }
+
+  input:not(:focus)::placeholder {
+    opacity: 0;
+  }
+  
+  input:not(:focus) ~ b,
+  input:not(:focus) ~ img.side-image
+  {
+    display: none;
+  }
+
+  .cform-in-valid{
+    border-color: #ef2222 !important;
+  
+    // ~label{    
+    // color: #ef2222;
+    // }
+  }
+  b{
+    position: absolute;
+    right: 3%;
+    bottom: 14%;
+    font-size: 14px;
+  }
+  
+  input:not(:placeholder-shown) ~ b {
+    position: absolute;
+    display: block;
+    right: 3%;
+    bottom: 14%;
+    font-size: 12px;
+  }
+
+  .cursor-pointer{
+    cursor: pointer;
+  }
+
+img.side-image{
+    position: absolute;
+    right: 3%;
+    padding: 5px;
+    width: 24px;
+    bottom: 4%;
+    background-color: white;
+    font-size: 14px;
+    transition: 0.3s ease-out;
+  }
+  
+  input:not(:placeholder-shown) ~ img.side-image {
+    position: absolute;
+    display: block;
+    right: 3%;
+    padding: 5px;
+    width: 24px;
+    bottom: 4%;
+    background-color: white;
+    font-size: 14px;
+    transition: 0.3s ease-out;
+  }
+
+  img.whole-image{
+    position: absolute;
+    right: 3%;
+    padding: 5px;
+    width: 29px;
+    bottom: 17%;
+    background-color: white;
+    font-size: 14px;
+    transition: 0.3s ease-out;
+  }
+  .disable{
+    cursor: not-allowed;
+  }

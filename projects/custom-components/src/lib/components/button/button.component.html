@@ -1,0 +1,35 @@
+<button *ngIf="!multiple; else multipleButton" [type]="type" [className]="buttonclass" [disabled]="isDisabled" [ngClass]="isDisabled ? 'disableButton' :''">
+    <ng-container *ngIf="faIconName.length > 0">
+        <i class="me-1" [class]="faIconName" aria-hidden="true"></i>
+    </ng-container>
+    <ng-container *ngIf="image.length > 0">
+        <img class="svgIcon" [src]="'/assets/'+image" alt="Reorder" width="14px">
+    </ng-container>
+    <ng-content>    
+    </ng-content>
+    <b class="bold-font-size">{{buttonText}}</b>
+</button>
+
+<ng-template #multipleButton>
+    <div class="multiple-buttons" *ngIf="!hideLeftBtn||!hideRightBtn">
+        <button class="mr-2" [class]="customClass" *ngIf="!hideLeftBtn" [disabled]="isDisabled" [matTooltip]="buttonHoverText.split(':')[0]" [matTooltipDisabled]="isDisabled" [ngClass]="isDisabled ? 'disableButton' :''" (click)="leftBtnClick.emit()">
+            <ng-container *ngIf="faIconName?.split(':')[0]?.length  > 0">
+                <i class="me-1" [class]="faIconName.split(':')[0]" aria-hidden="true"></i>
+            </ng-container>
+            <ng-container *ngIf="image?.split(':')[0]?.length > 0">
+                <img class="svgIcon" [src]="'/assets/'+image.split(':')[0]" alt="Reorder" width="14px">
+            </ng-container>
+            {{buttonText.split(':')[0]}}
+        </button>
+        <div [style.opacity]="isRightButtonDisabled && isDisabled ? '0.3' : '1'" class="divider" *ngIf="!hideRightBtn&&!hideLeftBtn"></div>
+        <button *ngIf="!hideRightBtn"  class="ml-2" [matTooltip]="buttonHoverText.split(':')[1]" [matTooltipDisabled]="isRightButtonDisabled" [disabled]="isRightButtonDisabled" [ngClass]="isRightButtonDisabled ? 'disableButton' :''" (click)="rightBtnClick.emit()">
+            <ng-container *ngIf="faIconName.split(':')[1]?.length > 0">
+                <i class="me-1" [class]="faIconName.split(':')[1]" aria-hidden="true"></i>
+            </ng-container>
+            <ng-container *ngIf="image.split(':')[1]?.length > 0">
+                <img class="svgIcon" [src]="'/assets/'+image.split(':')[1]" alt="Reorder" width="14px">
+            </ng-container>
+            {{buttonText.split(':')[1]}}
+        </button>
+    </div>
+</ng-template>

@@ -1,0 +1,140 @@
+
+.overlay-popup {
+  display: grid;
+  //flex-direction: column;
+  //position: absolute;
+  border: solid 1px #ccc;
+  border-radius: 5px;
+  background: #fff;
+  text-align: left;
+  margin: 0;
+  height: auto;
+  overflow-y: auto;
+  width: 100%;
+  max-height: 200px;
+
+  >span {
+    cursor: pointer !important;
+    padding: 10px;
+    margin: 2px;
+  }
+  >span:hover
+  {
+    background-color: #ccc;
+    color: black;
+  }
+
+}
+
+.selected-item {
+  background-color: rgba(7, 115, 209, 0.1215686275);
+  color: #0364b4;
+}
+
+.input-container {
+  height: 100%;
+  width: 100%;
+  min-width: 158px;
+  display: flex;
+  // justify-content: center;
+  // align-items: center;
+}
+
+.input-elements {
+  position: relative;
+  display: flex;
+
+  .drop-icon {
+    position: absolute;
+    right: 7px;
+    top: 14px;
+  }
+
+}
+
+label {
+  position: absolute;
+  font-size: 12px;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: bold;
+  color: #6D6D6D;
+  padding: 0 0.3rem;
+  margin: 0 0.3rem;
+  transition: 0.1s ease-out;
+  transform-origin: left top;
+  pointer-events: none;
+}
+
+input {
+
+  font-size: 12px;
+  width: 100%;
+  outline: none;
+  border: 1.6px solid #00000080;
+  border-radius: 5px;
+  padding: 1.4rem 0.7rem 0.3rem 0.5rem;
+  color: black;
+ // font-weight: bold;
+  transition: 0.1s ease-out;
+}
+
+input:focus {
+  border-color: #000000;
+}
+
+input:focus+label {
+  color: #6D6D6D;
+  top: 0;
+  transform: translateY(30%) scale(0.8) !important;
+}
+
+
+input:not(:placeholder-shown)+label {
+  top: 0;
+  transform: translateY(30%) scale(0.8) !important;
+}
+
+input:not(:focus)::placeholder {
+  opacity: 0;
+}
+
+input:not(:focus)~b {
+  display: none;
+}
+
+.cform-in-valid{
+  border-color: #ef2222;
+
+  ~label{    
+  color: #ef2222;
+  }
+}
+
+b {
+  position: absolute;
+  right: 3%;
+  bottom: 14%;
+  font-size: 14px;
+}
+
+input:not(:placeholder-shown)~b {
+  position: absolute;
+  display: block;
+  right: 3%;
+  bottom: 14%;
+  font-size: 12px;
+}
+
+.disabled-option {
+  background-color: #ebebeb !important;
+  font-style: italic !important;
+  color: #949494;
+}
+
+.auto-complete-cross{
+  width: 11px;
+  margin-right: 5px;
+  cursor: pointer;
+}

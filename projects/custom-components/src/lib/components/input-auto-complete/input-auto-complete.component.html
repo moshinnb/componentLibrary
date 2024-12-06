@@ -1,0 +1,40 @@
+<div>
+  <div class="input-elements">
+    <input type="text" [placeholder]="placeholder" [class.cform-in-valid]="!isFormValid" [formControl]="control" [id]="id"
+      cdkOverlayOrigin #trigger="cdkOverlayOrigin" #ele [readOnly]="isReadOnly" (focus)="[toggle(),onFocus()]"
+      (keyup)="[toggle($event),onKeyUp($event)]" (keydown)="onKeyDown($event)"  (click)="isOpen=!isOpen">
+    <label>{{labelValue}}
+      <ng-container *ngIf="required">
+        <span class="text-danger fw-bold fs-6">*</span>
+      </ng-container>
+    </label>
+    <div class="drop-icon" matRipple [matRippleCentered]="centered"
+      [matRippleDisabled]="disabled" [matRippleUnbounded]="unbounded" [matRippleRadius]="radius" [matRippleColor]="color">
+      <svg (click)="[isOpen=!isOpen,toggle(),ele.focus()]" *ngIf="enableClear && !control.value" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+        <path d="M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z" />
+      </svg>
+      <svg (click)="[isOpen=!isOpen,toggle(),ele.focus()]" *ngIf="!enableClear" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+        <path d="M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z" />
+      </svg>
+      <img *ngIf="enableClear && control.value" class="auto-complete-cross" src="/assets/icons/Close_black.svg" height="24" (click)="clearValue()" />
+    </div>
+  </div>
+</div>
+<ng-template cdkConnectedOverlay [cdkConnectedOverlayWidth]="contentwidth" [cdkConnectedOverlayOrigin]="trigger"
+  [cdkConnectedOverlayHasBackdrop]="true" [cdkConnectedOverlayBackdropClass]="'cdk-overlay-transparent-backdrop'"
+  [cdkConnectedOverlayOpen]="isOpen && !isReadOnly" (backdropClick)="onBackdropClick()">
+  <div class="w-100">
+    <div class="overlay-popup">
+      <ng-container *ngIf="dropDownValue?.length;else noresults">
+          <span *ngFor="let i of dropDownValue1; let index = index" (click)="selectItem(i)"
+          (mouseenter)="focusedIndex = index" [class.selected-item]="i == control.value"
+          [class.cursur-pointer]="true">{{i}}</span>
+        <span *ngIf="!dropDownValue1.length" class="disabled-option"> Matches Not Found</span>
+      </ng-container>
+      <ng-template #noresults >
+        <span class="disabled-option"> No data available</span>
+      </ng-template>
+    </div>
+  </div>
+</ng-template>
+

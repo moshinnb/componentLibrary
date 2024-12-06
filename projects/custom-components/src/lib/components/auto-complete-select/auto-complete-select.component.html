@@ -1,0 +1,21 @@
+<div class="select-container">
+    <input #input type="text" #trigger="matAutocompleteTrigger" [placeholder]="placeholder" [formControl]="control"
+        [matAutocomplete]="auto" class="select-input" [class.cursor-not-allowed]="isDisabled" (focus)="onInputFocus()" (click)="onInputFocus()" matTooltip="{{control.value}}" matTooltipPosition="below"/>
+    <mat-autocomplete #auto="matAutocomplete"  (opened)="dropdown?.classList?.add('showRotate')"
+        (closed)="dropdown?.classList?.remove('showRotate')" (optionSelected)="emitValue($event)">
+       <ng-container *ngFor="let dropDown of dropDownValue$ | async">
+        <mat-option *ngIf="dropDown != null" [value]="dropDown" [class]="control.value && control.value == dropDown[key] ? selectionStyleClass : 'disable-selection'" [ngClass]="fromLabAdmin ? 'disble-right-sign lba-admin' : 'disble-right-sign v3-admin'">
+            <div class="truncate-text" matTooltip="{{ dropDown[key] ?? ''}}" matTooltipPosition="right"> {{ dropDown[key]}}</div>
+        </mat-option> 
+        <mat-option *ngIf="dropDownValue && dropDownValue.length === 0" disabled>{{
+            NodataFound
+            }}</mat-option>
+    </ng-container>   
+    </mat-autocomplete>
+    <div id="dropdown" *ngIf="!control.value" (click)="!isDisabled && openOrCloseDD($event, trigger, input)">
+        <img #dropdownArove [class.cursor-not-allowed]="isDisabled" class="cusor-pointer" src="assets/icons/expand.png" alt="expand">
+    </div>
+    <div id="dropdown" class="px-1" *ngIf="control.value" (click)="!isDisabled && clearSearch()">
+        <img [class.cursor-not-allowed]="isDisabled" class="cusor-pointer" width="10px" src="assets/icons/Close_black.svg" alt="expand">
+    </div>
+</div>

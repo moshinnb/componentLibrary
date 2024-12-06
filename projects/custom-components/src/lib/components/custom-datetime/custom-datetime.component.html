@@ -1,0 +1,7 @@
+<div class="input-elements">
+    <input #ref class="input-element" [class.fw-vadmin]="!isLabAdmin" type="text" [matDatepicker]="picker" (input)="onDateInput($event)" [readOnly]="isDisabled" [formControlName]="formcontrolname" [class.cform-in-valid]="form.invalid && form.touched" [placeholder]="placeholder" maxlength="10" [matDatepickerFilter]="blockPreviousDate" [min]="!allowSelectedDateOnEdit ? minDate : null" [class.display-border]="form.value || picker.opened" (keyup.enter)="picker.open()"
+    (dateChange)="licensureExpDateInput($event)" />
+    <label>{{labelValue}}<ng-container *ngIf="required"><span class="text-danger fw-bold fs-6">*</span></ng-container></label>
+    <mat-datepicker panelClass="vdm-custom-datepicker" #picker></mat-datepicker>
+    <img class="ml-2 calender-image" [class]="isLabAdmin ? 'admin-calendar-image admin-img' : '' " src="assets/icons/Calendar.svg" (click)="picker.open()" alt="datepicker" />
+</div>

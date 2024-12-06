@@ -1,0 +1,19 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/custom-components",
+  "lib": {
+    "entryFile": "src/public-api.ts"
+   
+  },
+  "assets": [
+    "./assets/**/*.*"
+  ],
+  "allowedNonPeerDependencies": [
+    "@angular/animations",
+    "@angular/cdk",
+    "@angular/material",
+    "@popperjs/core",
+    "ngx-mask",
+    "bootstrap" 
+  ]
+}

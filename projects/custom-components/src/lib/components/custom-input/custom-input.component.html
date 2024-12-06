@@ -1,0 +1,28 @@
+<div class="input-container" *ngIf="!formarrayname">
+  <div class="input-elements" *ngIf="type.toLowerCase() != 'date'">
+    <input #ref [placeholder]="placeholder" [mask]="mask" [type]="type" [formControlName]="formcontrolname"
+      [prefix]="''" [class.cform-in-valid]="form.invalid && form.touched" [class.disable]="isDisabled" [maxLength]="maxLength"
+      [dropSpecialCharacters]="false" [specialCharacters]="['x','.','-','|','+','(',')',' ',',']" [validation]="false"
+      [disabled]="isDisabled" [readonly]="isReadOnly"  (keydown)="focus(ref)"/>
+    <label>{{labelValue}}<ng-container *ngIf="required || validators_required"><span class="text-danger fw-bold fs-6">*</span></ng-container></label>
+    <b *ngIf="subscript!=''">({{subscript}})</b>
+    <img class="side-image" [src]="img" *ngIf="imageType === 'side'" (click)="onImageClick.emit()" />
+    <img class="whole-image" [src]="img" *ngIf="imageType === 'whole'" (click)="onImageClick.emit()" />
+  </div>
+  <app-custom-datetime *ngIf="type.toLowerCase() == 'date'" [formcontrolname]="formcontrolname" [required]="required" [labelValue]="labelValue" [isDisabled]="isDisabled" [placeholder]="placeholder" [isLabAdmin]="isLabAdmin" [minDate]="minDate" [allowSelectedDateOnEdit]="allowSelectedDateOnEdit"></app-custom-datetime>
+</div>
+
+<div class="input-container" *ngIf="formarrayname" [formArrayName]="formarrayname ">
+  <div class="input-elements" [formGroupName]="formgroupname">
+    <input #ref [placeholder]="placeholder" [mask]="mask" [type]="type" [formControlName]="formcontrolname"
+      [prefix]="''" [class.cform-in-valid]="form.invalid && form.touched" [class.disable]="isDisabled" [maxLength]="maxLength"
+      [dropSpecialCharacters]="false" [specialCharacters]="['x','.','-','|','+','(',')',' ']" [validation]="false"
+      [disabled]="isDisabled" [readonly]="isReadOnly" (keydown)="focus(ref)"/>
+    <label>{{labelValue}}
+      <ng-container *ngIf="required">
+        <span class="text-danger fw-bold fs-6">*</span>
+      </ng-container>
+    </label>
+    <b *ngIf="subscript!=''">({{subscript}})</b>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+{
+  "name": "ng-ui-extension",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^16.2.0",
+    "@angular/core": "^16.2.0",
+    "@angular/forms": "^16.2.12"
+  },
+  "dependencies": {
+    "@angular/animations": "^16.2.12",
+    "@angular/cdk": "^16.2.14",
+    "@angular/material": "^16.2.14",
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^4.6.2",
+    "ngx-mask": "^16.4.2",
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}

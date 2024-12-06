@@ -1,0 +1,49 @@
+@import '../../custom.variables.scss';
+
+.calender-image{
+    filter: invert(27%) sepia(100%) saturate(1159%) hue-rotate(185deg) brightness(93%) contrast(101%);
+    width: 19px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+::ng-deep .vdm-custom-datepicker .mat-calendar-body-selected{
+    background-color: $bg-color !important;
+}
+
+::ng-deep .vdm-custom-datepicker .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical){
+    background-color: #0364b438 !important;
+}
+
+::ng-deep .vdm-custom-datepicker .cdk-program-focused .mat-calendar-body-active>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical){
+    background-color: #0364b438 !important;
+}
+
+::ng-deep .vdm-custom-datepicker .mat-calendar-body-active .mat-focus-indicator:not(.mat-calendar-body-selected){
+    background-color: #0364b438 !important;
+}
+
+input{
+    color: black;
+}
+
+img{
+    position: absolute;
+    right: 1vw;
+    width: 15px !important;
+    bottom: 16%;
+    font-size: 14px;
+}
+
+.admin-img{
+    width: 19px !important;
+    bottom: 27% !important;
+}
+
+.admin-calendar-image{
+    filter: unset;
+}
+
+.fw-vadmin{    
+    font-weight: 400 !important;
+}

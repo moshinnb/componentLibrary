@@ -1,0 +1,165 @@
+@import '../../custom.variables.scss';
+*{
+  padding:0;
+  margin: 0;
+  box-sizing: border-box;
+}
+  
+.input-elements {
+  position: relative;
+}
+
+label {
+  position: absolute;
+  font-size: 13px;
+  left: 3px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: bold;
+  color: black;
+  padding: 0 0.3rem;
+  margin: 0 0.3rem;
+  transition: 0.1s ease-out;
+  transform-origin: left top;
+  pointer-events: none;
+  font-family: inherit;
+}
+
+.input-element {
+  font-size: 13px;
+  font-family: inherit;
+  width: 100%;
+  outline: none;
+  border: $border-size solid #00000029;
+  border-radius: 5px;
+  padding: 1.4rem 0.7rem 0.3rem 0.7rem;
+  color: #000000c9;
+  font-weight: 600;
+  transition: 0.1s ease-out;
+  height: 45px;
+  
+}
+
+.input-element:focus:focus-within {
+  border-color: #00000087;
+}
+
+.input-element:focus + label {
+  color: #6D6D6Dbd !important;
+  top: 0;
+  transform: translateY(30%) scale(0.9) !important;
+}
+
+
+.input-element:not(:placeholder-shown) + label {
+  top: 0;
+  transform: translateY(30%) scale(0.9) !important;
+  color: #6D6D6Dbd !important;
+}
+
+.input-element:not(:focus)::placeholder {
+  opacity: 0;
+}
+
+.input-element:not(:focus) ~ b {
+  display: none;
+}
+.cform-in-valid{
+  border-color: #ef2222 !important;
+
+  // ~label{    
+  // color: #ef2222;
+  // }
+}
+.drop-icon{
+  position: absolute;
+  right: 1vw;
+  width: 15px;
+  bottom: 35%;
+  font-size: 14px;
+  transition: 0.3s ease-out;
+}
+
+.input-element:not(:placeholder-shown) ~ b {
+  position: absolute;
+  display: block;
+  right: 3%;
+  bottom: 14%;
+  font-size: 12px;
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+.custom-dropdown{
+  border: 1.6px solid #00000087;
+  width: 100%;
+  border-radius: 5px;
+  padding-right: 0.9px;
+
+  .dropdown-container,
+  .dropdown-container-for-new-admin{
+  border-radius: 5px;
+  max-height: 100px;
+  overflow-y: auto;
+  cursor: pointer;
+  background-color: white;
+
+  .each-item{
+    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: inherit;
+
+    &:is(:hover,:focus){
+      background-color: #eeeeee;
+      color: black;
+    }
+  }
+  .show-hover{
+    background-color: #eeeeee;
+    color: black;
+  }
+}
+}
+
+.show-selected{
+  background-color: $btn-color !important;
+  color: white !important;
+}
+
+.display-border{  
+  border-color: rgba(0, 0, 0, 0.5294117647);
+}
+.flip-icon{
+  transform: rotateX(180deg);
+  transition: 0.3s ease-in;
+}
+
+::ng-deep.backdrop-z-index{
+  // z-index: 10000;
+}
+.disable{
+  cursor: not-allowed !important;
+}
+
+.dropdown-container-for-new-admin{
+  .each-item:is(:hover,:focus):not(.show-selected){
+    background-color: #2350B9 !important;
+    color: white !important;
+  }
+
+  .show-hover:not(.show-selected){
+    background-color: #2350B9 !important;
+    color: white !important;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 5px !important;
+  height: auto !important;
+}
+.cform-in-valid{
+  border-color: #ef2222 !important;
+}

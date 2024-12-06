@@ -1,0 +1,29 @@
+<div class="input-container" #maindivct tabindex="0" (focus)="inp.focus()" >
+    <div (click)="[showHideDropDown()]" class="input-elements" #customSelect (keydown)="keydown($event)">
+    <input class="input-element" [class.display-border]="form?.value" [class.cform-in-valid]="form?.invalid && form?.touched" [class.disable]="form?.disabled" type="text"  #inp cdkOverlayOrigin #trigger="cdkOverlayOrigin" [value]="selectedItem" [class.cform-in-valid]="form?.invalid && form?.touched || (enableSearch && filterForm.value && !form?.value)" (input)="FilterDropDown(inp.value)" [disabled]="form?.disabled" [readonly]="!enableSearch" [placeholder]="placeholder" (focusout)="SetFormValidator()" />
+      <label>{{labelValue}}<ng-container *ngIf="required || validators_required">
+        <span class="text-danger fw-bold fs-6">*</span>
+        </ng-container>
+    </label>
+    <img class="cursor-pointer drop-icon" [class.flip-icon]="showDropDown"  [class.disable]="form?.disabled" src="/assets/icons/Arrow_for_dropdwon.svg" alt="dropdown"/>
+</div>
+<ng-template  
+      cdkConnectedOverlay
+      [cdkConnectedOverlayWidth]="contentWidth.width!"
+      [cdkConnectedOverlayOrigin]="trigger"  
+      [cdkConnectedOverlayHasBackdrop]="true"  
+      [cdkConnectedOverlayBackdropClass]="['cdk-overlay-transparent-backdrop', 'backdrop-z-index']"
+      [cdkConnectedOverlayOpen]="showDropDown" (overlayKeydown)="pressed($event)"
+      (backdropClick)="[showDropDown=false]" (detach)="showDropDown=false" (positionChange)="focusOnElement()" *ngIf="filterDropDown$ | async as dropdown" >
+      <div class="overlay-popup custom-dropdown" aria-label="true" *ngIf="dropdown.length">
+        <div [class]="fromLabAdmin ? 'dropdown-container-for-new-admin' : 'dropdown-container'"  #cstmpopup >
+          <div class="each-item" *ngIf="defaultOption" (click)="setToDefault()" [tabindex]="0" (keydown.enter)="setToDefault()"  >
+            {{defaultOption}}
+          </div>
+          <div class="each-item" (keydown.enter)="addValue(drp)" [class.show-selected]="drp[dropDownValueProp] === form?.value && form?.value" [tabindex]="0" [class.show-hover]="enableSearch && currentFilteredValues[0][dropDownKeyProp] === drp[dropDownKeyProp] && !isKeyEventActive && !form?.value" *ngFor="let drp of dropdown ;index as i" (click)="addValue(drp)">
+              {{drp[dropDownKeyProp]}}
+          </div>
+        </div>
+      </div>
+ </ng-template>
+</div>
