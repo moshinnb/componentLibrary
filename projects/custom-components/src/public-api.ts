@@ -24,7 +24,3 @@ export * from './lib/pipes/asyncloader.pipe'
 export * from './lib/pipes/highlight-text.pipe'
 export * from './lib/pipes/replace-string.pipe'
 export * from './lib/pipes/formate-date/format-date.pipe'
-
-
-
-
